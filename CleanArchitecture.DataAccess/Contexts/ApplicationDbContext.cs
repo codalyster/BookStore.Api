@@ -23,8 +23,8 @@ namespace CleanArchitecture.DataAccess.Contexts
             builder.Entity<IdentityRole>()
                 .HasData
                 (
-                     new IdentityRole() { Name = SD.Role_Admin, ConcurrencyStamp = "1", NormalizedName = SD.Role_Admin },
-                     new IdentityRole() { Name = SD.Role_User, ConcurrencyStamp = "2", NormalizedName = SD.Role_User }
+                     new IdentityRole() { Id = "1", Name = SD.Role_Admin, ConcurrencyStamp = "1", NormalizedName = SD.Role_Admin },
+                     new IdentityRole() { Id = "2", Name = SD.Role_User, ConcurrencyStamp = "2", NormalizedName = SD.Role_User }
                 );
         }
     }

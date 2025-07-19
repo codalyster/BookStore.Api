@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace BrainHope.Services.DTO.Authentication.SignIn
 {
@@ -16,8 +10,8 @@ namespace BrainHope.Services.DTO.Authentication.SignIn
 
         [Required(ErrorMessage = "Password is required.")]
         [DataType(DataType.Password)]
-        [RegularExpression(@"^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d@$!%*?&]{6,}$",
-            ErrorMessage = "Password must be at least 6 characters long and contain both letters and numbers.")]
+        [RegularExpression(@"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$",
+            ErrorMessage = "Password must be at least 8 characters and include uppercase, lowercase, number, and special character.")]
         public string Password { get; set; }
     }
 

@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace BrainHope.Services.DTO.Authentication.SingUp
 {
@@ -18,8 +13,8 @@ namespace BrainHope.Services.DTO.Authentication.SingUp
 
         [Required(ErrorMessage = "Password is required.")]
         [DataType(DataType.Password)]
-        [RegularExpression(@"^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$",
-            ErrorMessage = "Password must be at least 8 characters and include letters, numbers, and a special character.")]
+        [RegularExpression(@"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$",
+    ErrorMessage = "Password must be at least 8 characters and include uppercase, lowercase, number, and special character.")]
         public string NewPassword { get; set; }
 
         [Required(ErrorMessage = "Confirm Password is required.")]
