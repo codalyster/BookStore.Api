@@ -47,8 +47,7 @@ namespace CleanArchitecture.DataAccess.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("EducationLevel")
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Email")
                         .HasMaxLength(256)
@@ -73,8 +72,7 @@ namespace CleanArchitecture.DataAccess.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Location")
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("LockoutEnabled")
                         .HasColumnType("bit");
@@ -103,8 +101,7 @@ namespace CleanArchitecture.DataAccess.Migrations
                         .HasColumnType("bit");
 
                     b.Property<string>("PreferredTopics")
-                        .HasMaxLength(500)
-                        .HasColumnType("nvarchar(500)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ProfilePictureUrl")
                         .HasColumnType("nvarchar(max)");
@@ -119,8 +116,7 @@ namespace CleanArchitecture.DataAccess.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("ReligiousLevel")
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("SecurityStamp")
                         .HasColumnType("nvarchar(max)");
@@ -258,6 +254,69 @@ namespace CleanArchitecture.DataAccess.Migrations
                     b.HasIndex("BookId");
 
                     b.ToTable("OrderDetails");
+                });
+
+            modelBuilder.Entity("CleanArchitecture.DataAccess.Models.UserRating", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<float>("Age")
+                        .HasColumnType("real");
+
+                    b.Property<int>("AuthorIdx")
+                        .HasColumnType("int");
+
+                    b.Property<float>("AverageRating")
+                        .HasColumnType("real");
+
+                    b.Property<int>("BookIdx")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("BornMuslim")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Category")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Country")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("EducationLevel")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Gender")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsNewMuslim")
+                        .HasColumnType("bit");
+
+                    b.Property<float>("Rating")
+                        .HasColumnType("real");
+
+                    b.Property<string>("ReligiousLevel")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("TopicIdx")
+                        .HasColumnType("int");
+
+                    b.Property<int>("UserIdx")
+                        .HasColumnType("int");
+
+                    b.Property<float>("UserRatingCount")
+                        .HasColumnType("real");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("UserRatings");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>

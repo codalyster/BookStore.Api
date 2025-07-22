@@ -7,6 +7,7 @@ using CleanArchitecture.Services;
 using CleanArchitecture.Services.Interfaces;
 using CleanArchitecture.Services.Services;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using StackExchange.Redis;
 using Utilites;
 
@@ -73,7 +74,27 @@ namespace CleanArchitecture.Api
 
             builder.Services.AddSignalR();
 
+            builder.Services.AddScoped<UserRatingSeeder>();
+
             var app = builder.Build();
+
+            using (var scope = app.Services.CreateScope())
+            {
+                var services = scope.ServiceProvider;
+
+                try
+                {
+                    var context = services.GetRequiredService<ApplicationDbContext>();
+                    context.Database.Migrate(); // Apply migrations if needed
+
+                    var seeder = services.GetRequiredService<UserRatingSeeder>();
+                    seeder.SeedUserRatingsAsync().GetAwaiter().GetResult(); // <-- No await needed
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"Seeding error: {ex.InnerException?.Message ?? ex.Message}");
+                }
+            }
 
             // Redis ImageHelper Config
             var accessor = app.Services.GetRequiredService<IHttpContextAccessor>();
