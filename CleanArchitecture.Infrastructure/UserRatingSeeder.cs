@@ -25,7 +25,7 @@ namespace CleanArchitecture.Infrastructure
         {
             try
             {
-                var hasData = await _context.UserRatings.AnyAsync();
+                var hasData = await _context.ApplicationUsers.AnyAsync();
                 if (hasData)
                 {
                     _logger.LogInformation("UserRatings table already has data. Skipping seeding.");
@@ -50,9 +50,9 @@ namespace CleanArchitecture.Infrastructure
                 using var csv = new CsvReader(reader, config);
                 csv.Context.RegisterClassMap<UserRatingMap>();
 
-                var records = csv.GetRecords<UserRating>().ToList();
+                var records = csv.GetRecords<ApplicationUser>().ToList();
 
-                await _context.UserRatings.AddRangeAsync(records);
+                await _context.ApplicationUsers.AddRangeAsync(records);
                 await _context.SaveChangesAsync();
 
                 _logger.LogInformation("UserRatings seeding completed. Inserted {Count} records.", records.Count);

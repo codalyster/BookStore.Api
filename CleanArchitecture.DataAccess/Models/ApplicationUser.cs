@@ -4,23 +4,29 @@ namespace CleanArchitecture.DataAccess.Models
 {
     public class ApplicationUser : IdentityUser
     {
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public string? Address { get; set; }
-        public string? Bio { get; set; }
-        public int? Age { get; set; }
-        public string? ProfilePictureUrl { get; set; }
-        public int? NumberOfBooks { get; set; }
-        public int? Rating { get; set; }
-        public string? Location { get; set; }
+        public int UserIdx { get; set; }
+        public int BookIdx { get; set; }
+        public float Rating { get; set; }
+        public string Country { get; set; }
         public string Gender { get; set; }
-        public bool? IsNewMuslim { get; set; }
-        public bool? BornMuslim { get; set; }
-        public string? EducationLevel { get; set; }
-        public string? ReligiousLevel { get; set; }
-        public string? PreferredTopics { get; set; }
+        public float Age { get; set; }
+        public bool IsNewMuslim { get; set; }
+        public bool BornMuslim { get; set; }
+        public string EducationLevel { get; set; }
+        public string ReligiousLevel { get; set; }
+        public int TopicIdx { get; set; }
+        public int AuthorIdx { get; set; }
+        public string Category { get; set; }
+        public float AverageRating { get; set; }
+        public float UserRatingCount { get; set; }
 
-        // Navigation properties
+
+
+        public string? FirstName { get; set; }
+        public string? LastName { get; set; }
+        public string? ProfilePictureUrl { get; set; }
+        public string? Location { get; set; }
+
         public virtual List<Book>? Books { get; set; } = new();
         public virtual List<Order>? Orders { get; set; } = new();
         public string? RefreshToken { get; set; }

@@ -18,7 +18,7 @@ namespace CleanArchitecture.Api.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
-            var data = await _context.UserRatings.Take(10).ToListAsync();
+            var data = await _context.ApplicationUsers.Take(10).ToListAsync();
             return Ok(data);
         }
     }

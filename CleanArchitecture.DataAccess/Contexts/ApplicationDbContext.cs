@@ -13,7 +13,6 @@ namespace CleanArchitecture.DataAccess.Contexts
         public DbSet<Category> Categories { get; set; }
         public DbSet<Order> Orders { get; set; }
         public DbSet<OrderDetails> OrderDetails { get; set; }
-        public DbSet<UserRating> UserRatings { get; set; }
 
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
         {

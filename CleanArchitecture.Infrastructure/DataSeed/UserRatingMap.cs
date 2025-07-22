@@ -3,7 +3,7 @@ using CsvHelper.Configuration;
 
 namespace CleanArchitecture.Infrastructure.DataSeed
 {
-    public sealed class UserRatingMap : ClassMap<UserRating>
+    public sealed class UserRatingMap : ClassMap<ApplicationUser>
     {
         public UserRatingMap()
         {
